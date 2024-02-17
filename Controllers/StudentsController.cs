@@ -60,6 +60,6 @@ public class StudentsContoller : ControllerBase
         }
 
         await _studentsService.RemoveAsync(id);
-        return;
+        return NoContent();
     }
 }
