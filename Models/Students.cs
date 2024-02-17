@@ -1,5 +1,6 @@
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using System.Text.Json.Serialization;
 
 namespace Eclass.Models;
 
@@ -9,6 +10,7 @@ public class Students{
     public String? Id {get; set; }
 
     [BsonElement("Nim")]
+    [JsonPropertyName("nim")]
     public string Nim {get; set; } = null!;
 
     public string Name {get; set; } = null!;
