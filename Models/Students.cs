@@ -7,7 +7,7 @@ namespace Eclass.Models;
 public class Students{
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
-    public String? Id {get; set; }
+    public string? Id {get; set; }
 
     [BsonElement("Nim")]
     [JsonPropertyName("nim")]

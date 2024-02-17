@@ -9,8 +9,9 @@ builder.Services.Configure<EclassDatabaseSettings>(
 
 builder.Services.AddSingleton<StudentsServices>();
 
-builder.Services.AddControllers().AddJsonOptions(
-        options => options.JsonSerializerOptions.PropertyNamingPolicy = null);;
+builder.Services.AddSingleton<UserServices>();
+
+builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

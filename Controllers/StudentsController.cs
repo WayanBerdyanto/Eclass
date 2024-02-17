@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Eclass.Controllers;
 
-[ApiController]
 [Route("api/[controller]")]
+[ApiController]
 public class StudentsContoller : ControllerBase
 {
     private readonly StudentsServices _studentsService;
