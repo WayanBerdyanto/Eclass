@@ -36,4 +36,30 @@ public class StudentsContoller : ControllerBase
 
         return CreatedAtAction(nameof(Get), new { id = newStudents.Id }, newStudents);
     }
+    [HttpPut("{id:length(24)}")]
+    public async Task<IActionResult> Update(string id, Students updateStudents){
+
+        var students = await _studentsService.GetAsync(id);
+
+        if(students is null){
+            return NotFound();
+        }
+        updateStudents.Id = students.Id;
+
+        await _studentsService.UpdateAsync(id, updateStudents);
+
+        return NoContent();
+    }
+
+    [HttpDelete("{id:length(24)}")]
+    public async Task<IActionResult> Delete(string id){
+        var students = await _studentsService.GetAsync(id);
+
+        if(students is null){
+            return NotFound();
+        }
+
+        await _studentsService.RemoveAsync(id);
+        return;
+    }
 }

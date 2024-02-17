@@ -35,4 +35,13 @@ public class StudentsServices
 
     public async Task RemoveAsync(string id) =>
         await _studentsCollection.DeleteOneAsync(x => x.Id == id);
+
+    // Filter
+    // public async Task AddToStudentListAsync(string id, string id2){
+    //     FilterDefinition<Students> filter = Builders<Students>.Filter.Eq("id", id);
+    //     UpdateDefinition<Students> update = Builders<Students>.Update.AddToSet<String>("id2", id2);
+
+    //     await _studentsCollection.UpdateOneAsync(filter, update);
+    //     return;
+    // }
 }
