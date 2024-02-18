@@ -34,33 +34,7 @@ public class UserServices
 
     public async Task CreateAsync(Users newUsers)
     {
-        var keys = Builders<Users>.IndexKeys.Ascending(s => s.Username);
-        var options = new CreateIndexOptions { Unique = true };
-        var model = new CreateIndexModel<Users>(keys, options);
-
-        if (!IsValidGmailAddress(newUsers.Email))
-        {
-            throw new ArgumentException("Email must end with @gmail.com");
-        }
-        try
-        {
-            await _usersCollection.Indexes.CreateOneAsync(model);
-            await _usersCollection.InsertOneAsync(newUsers);
-        }
-        catch (MongoWriteException ex)
-        {
-            if (ex.WriteError.Category == ServerErrorCategory.DuplicateKey)
-            {
-                // Handle the duplicate Nim error here
-                throw new Exception(
-                    "username Sudah Digunakan Silahkan Menggunakan username yang berbeda"
-                );
-            }
-            else
-            {
-                throw;
-            }
-        }
+        await _usersCollection.InsertOneAsync(newUsers);
     }
 
     public async Task UpdateAsync(string id, Users userStudents) =>
