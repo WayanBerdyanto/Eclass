@@ -1,6 +1,6 @@
+using System.Text.Json.Serialization;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using System.Text.Json.Serialization;
 
 namespace Eclass.Models;
 
@@ -19,5 +19,4 @@ public class Users
 
     [BsonElement("Password")]
     public string Password { get; set; } = null!;
-
 }

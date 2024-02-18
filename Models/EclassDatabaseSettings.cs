@@ -15,8 +15,6 @@ public class EclassDatabaseSettings
     public string ElectiveCoursesCollectionName { get; set; } = null!;
 
     public string UsersCollectionName { get; set; } = null!;
-    
-    public string LoginCollectionName { get; set; } = null!;
 
 
 }

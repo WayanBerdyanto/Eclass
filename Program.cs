@@ -1,12 +1,29 @@
+using System.Security.Claims;
+using System.Text;
 using Eclass.Models;
 using Eclass.Services;
-using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(
+        name: MyAllowSpecificOrigins,
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:5207");
+        }
+    );
+});
+
 // Add services to the container.
 builder.Services.Configure<EclassDatabaseSettings>(
-    builder.Configuration.GetSection("EclassDatabase"));
+    builder.Configuration.GetSection("EclassDatabase")
+);
 
 builder.Services.AddSingleton<StudentsServices>();
 
@@ -18,11 +35,57 @@ builder.Services.AddControllers();
 
 // AUTH
 builder.Services.AddAuthorization();
-builder.Services.AddAuthentication("Bearer").AddJwtBearer();
+builder
+    .Services.AddAuthentication(options =>
+    {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+    })
+    .AddJwtBearer(o =>
+    {
+        o.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"])
+            ),
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = false,
+            ValidateIssuerSigningKey = true
+        };
+    });
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder
+    .Configuration.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+    .AddEnvironmentVariables();
+
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(options =>
+{
+    options.SwaggerDoc(
+        "v1",
+        new OpenApiInfo
+        {
+            Version = "v1",
+            Title = "Eclass API",
+            Description = "Simple API documentation for OpenApi",
+            Contact = new OpenApiContact
+            {
+                Name = "Wayan Berdyanto",
+                Url = new Uri("https://www.linkedin.com/in/wayanberdyanto/")
+            },
+            License = new OpenApiLicense
+            {
+                Name = "Wayan Berdyanto",
+                Url = new Uri("https://github.com/WayanBerdyanto/Eclass")
+            }
+        }
+    );
+});
 
 var app = builder.Build();
 
@@ -37,9 +100,11 @@ app.UseHttpsRedirection();
 
 app.UseAuthorization();
 
-app.MapGet("/", () => "Hello, World!");
-app.MapGet("/secret", (ClaimsPrincipal user) => $"Hello {user.Identity?.Name}. My secret")
-    .RequireAuthorization();
+IConfiguration configuration = app.Configuration;
+
+IWebHostEnvironment environment = app.Environment;
+
+app.UseCors(MyAllowSpecificOrigins);
 
 app.MapControllers();
 

@@ -91,3 +91,10 @@ D:\RestAPIEclass\Eclass\obj\Debug\net7.0\Eclass.pdb
 D:\RestAPIEclass\Eclass\obj\Debug\net7.0\Eclass.genruntimeconfig.cache
 D:\RestAPIEclass\Eclass\obj\Debug\net7.0\ref\Eclass.dll
 D:\RestAPIEclass\Eclass\bin\Debug\net7.0\BCrypt.Net-Next.dll
+D:\RestAPIEclass\Eclass\bin\Debug\net7.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\RestAPIEclass\Eclass\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\RestAPIEclass\Eclass\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+D:\RestAPIEclass\Eclass\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
+D:\RestAPIEclass\Eclass\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\RestAPIEclass\Eclass\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+D:\RestAPIEclass\Eclass\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll

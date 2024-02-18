@@ -1,5 +1,6 @@
 using Eclass.Models;
 using Eclass.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Eclass.Controllers;
@@ -14,9 +15,11 @@ public class StudentsContoller : ControllerBase
         _studentsService = studentsService;
 
     [HttpGet]
+    // [Authorize]
     public async Task<List<Students>> Get() => await _studentsService.GetAsync();
 
     [HttpGet("{id:length(24)}")]
+    [Authorize]
     public async Task<ActionResult<Students>> Get(string id)
     {
         var student = await _studentsService.GetAsync(id);
@@ -30,6 +33,7 @@ public class StudentsContoller : ControllerBase
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<IActionResult> Post(Students newStudents)
     {
         await _studentsService.CreateAsync(newStudents);
@@ -37,6 +41,7 @@ public class StudentsContoller : ControllerBase
         return CreatedAtAction(nameof(Get), new { id = newStudents.Id }, newStudents);
     }
     [HttpPut("{id:length(24)}")]
+    [Authorize]
     public async Task<IActionResult> Update(string id, Students updateStudents){
 
         var students = await _studentsService.GetAsync(id);
@@ -52,6 +57,7 @@ public class StudentsContoller : ControllerBase
     }
 
     [HttpDelete("{id:length(24)}")]
+    [Authorize]
     public async Task<IActionResult> Delete(string id){
         var students = await _studentsService.GetAsync(id);
 

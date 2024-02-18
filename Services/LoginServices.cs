@@ -22,4 +22,10 @@ public class LoginServices
 
     public async Task<List<Users>> GetAsync() =>
         await _usersCollection.Find(_ => true).ToListAsync();
+
+    // public async Task<List<Users>> AuthLogin(string username) =>
+    //     await _usersCollection.Find(x => x.Username == username).ToListAsync();
+
+    public async Task<Users?> AuthLogin(string username) =>
+        await _usersCollection.Find(x => x.Username == username).FirstOrDefaultAsync();
 }

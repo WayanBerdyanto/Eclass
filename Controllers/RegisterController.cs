@@ -40,7 +40,7 @@ public class RegisterController : ControllerBase
         try
         {
             await _userService.CreateAsync(newUsers);
-            return new ObjectResult(new { error = false, success = "User created successfully" })
+            return new ObjectResult(new { success = true, message = "User created successfully" })
             {
                 StatusCode = 201
             };
