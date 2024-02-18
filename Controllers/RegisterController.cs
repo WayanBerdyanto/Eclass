@@ -24,6 +24,19 @@ public class RegisterController : ControllerBase
         {
             throw new ArgumentException("Email must end with @gmail.com");
         }
+        if(newUsers.Password.Length < 8){
+            return new ObjectResult(
+                new{
+                    error = true,
+                    message = "Password must be at least 8 characters"
+                }
+            );
+        }
+
+        string hashedPassword = BCrypt.Net.BCrypt.HashPassword(newUsers.Password);
+
+        newUsers.Password = hashedPassword;
+
         try
         {
             await _userService.CreateAsync(newUsers);

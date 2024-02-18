@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "CBMJlYgzj+ddIkrA3xCaBkIzWRsMtHWEUH3a/dA9wJrTaDbNthLD4nYz0IRygFHm6sGT3EL9nJcMoFumCSESdQ==",
+  "dgSpecHash": "z523OAvsUCBAFyg+SAe7t9gkmb3MkNDK4widxSl2Y2/5VtqKt5cCkmSoegDugoPk+L5UYRl1BrcgHVvMcl0PxA==",
   "success": true,
   "projectFilePath": "D:\\RestAPIEclass\\Eclass\\Eclass.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\USER\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\bcrypt.net-next\\4.0.3\\bcrypt.net-next.4.0.3.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.5\\microsoft.aspnetcore.openapi.7.0.5.nupkg.sha512",
     "C:\\Users\\USER\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
