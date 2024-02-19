@@ -15,7 +15,7 @@ public class StudentsContoller : ControllerBase
         _studentsService = studentsService;
 
     [HttpGet]
-    // [Authorize]
+    [Authorize]
     public async Task<List<Students>> Get() => await _studentsService.GetAsync();
 
     [HttpGet("{id:length(24)}")]
@@ -40,32 +40,47 @@ public class StudentsContoller : ControllerBase
 
         return CreatedAtAction(nameof(Get), new { id = newStudents.Id }, newStudents);
     }
+
     [HttpPut("{id:length(24)}")]
     [Authorize]
-    public async Task<IActionResult> Update(string id, Students updateStudents){
-
+    public async Task<IActionResult> Update(string id, [FromBody] Students updateStudents)
+    {
         var students = await _studentsService.GetAsync(id);
 
-        if(students is null){
-            return NotFound();
+        if (students is null)
+        {
+            return new ObjectResult(new { error = true, message = "Id Tidak Ditemukan" })
+            {
+                StatusCode = 404
+            };
         }
         updateStudents.Id = students.Id;
-
         await _studentsService.UpdateAsync(id, updateStudents);
 
-        return NoContent();
+        return new ObjectResult(new { success = true, message = "Update successfully", })
+        {
+            StatusCode = 200
+        };
     }
 
     [HttpDelete("{id:length(24)}")]
     [Authorize]
-    public async Task<IActionResult> Delete(string id){
+    public async Task<IActionResult> Delete(string id)
+    {
         var students = await _studentsService.GetAsync(id);
 
-        if(students is null){
-            return NotFound();
+        if (students is null)
+        {
+            return new ObjectResult(new { error = true, message = "Id Tidak Ditemukan" })
+            {
+                StatusCode = 404
+            };
         }
 
         await _studentsService.RemoveAsync(id);
-        return NoContent();
+        return new ObjectResult(new { success = true, message = "Delete successfully", })
+        {
+            StatusCode = 200
+        };
     }
 }
