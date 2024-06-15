@@ -84,7 +84,6 @@ D:\RestAPIEclass\Eclass\obj\Debug\net7.0\staticwebassets.pack.json
 D:\RestAPIEclass\Eclass\obj\Debug\net7.0\staticwebassets.build.json
 D:\RestAPIEclass\Eclass\obj\Debug\net7.0\staticwebassets.development.json
 D:\RestAPIEclass\Eclass\obj\Debug\net7.0\scopedcss\bundle\Eclass.styles.css
-D:\RestAPIEclass\Eclass\obj\Debug\net7.0\Eclass.csproj.CopyComplete
 D:\RestAPIEclass\Eclass\obj\Debug\net7.0\Eclass.dll
 D:\RestAPIEclass\Eclass\obj\Debug\net7.0\refint\Eclass.dll
 D:\RestAPIEclass\Eclass\obj\Debug\net7.0\Eclass.pdb
@@ -98,3 +97,5 @@ D:\RestAPIEclass\Eclass\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.dll
 D:\RestAPIEclass\Eclass\bin\Debug\net7.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 D:\RestAPIEclass\Eclass\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
 D:\RestAPIEclass\Eclass\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll
+D:\RestAPIEclass\Eclass\obj\Debug\net7.0\Eclass.sourcelink.json
+D:\RestAPIEclass\Eclass\obj\Debug\net7.0\Eclass.csproj.Up2Date
