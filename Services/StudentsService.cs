@@ -27,7 +27,7 @@ public class StudentsServices
     }
 
     public async Task<List<Students>> GetAsync() =>
-        await _studentsCollection.Find(_ => true).ToListAsync();
+        await _studentsCollection.Find(_ => true).SortByDescending(student => student.Id).ToListAsync();
 
     public async Task<Students?> GetAsync(string id) =>
         await _studentsCollection.Find(x => x.Id == id).FirstOrDefaultAsync();

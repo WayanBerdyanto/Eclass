@@ -38,7 +38,16 @@ public class StudentsContoller : ControllerBase
     {
         await _studentsService.CreateAsync(newStudents);
 
-        return CreatedAtAction(nameof(Get), new { id = newStudents.Id }, newStudents);
+        var response = new
+        {
+            id = newStudents.Id,
+            nim = newStudents.Nim,
+            name = newStudents.Name,
+            address = newStudents.Address,
+            email = newStudents.Email
+        };
+
+        return CreatedAtAction(nameof(Get), new { id = newStudents.Id }, response); 
     }
 
     [HttpPut("{id:length(24)}")]
