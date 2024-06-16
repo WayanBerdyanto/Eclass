@@ -47,7 +47,7 @@ public class StudentsContoller : ControllerBase
             email = newStudents.Email
         };
 
-        return CreatedAtAction(nameof(Get), new { id = newStudents.Id }, response); 
+        return CreatedAtAction(nameof(Get), new { id = newStudents.Id }, response);
     }
 
     [HttpPut("{id:length(24)}")]
@@ -66,10 +66,10 @@ public class StudentsContoller : ControllerBase
         updateStudents.Id = students.Id;
         await _studentsService.UpdateAsync(id, updateStudents);
 
-        return new ObjectResult(new { success = true, message = "Update successfully", })
+        return new ObjectResult(new { success = true, message = "Update successfully", data = updateStudents })
         {
             StatusCode = 200
-        };
+        };  
     }
 
     [HttpDelete("{id:length(24)}")]
@@ -87,7 +87,7 @@ public class StudentsContoller : ControllerBase
         }
 
         await _studentsService.RemoveAsync(id);
-        return new ObjectResult(new { success = true, message = "Delete successfully", })
+        return new ObjectResult(new { success = true, message = "Delete successfully", data = students })
         {
             StatusCode = 200
         };
