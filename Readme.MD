@@ -26,5 +26,5 @@ dotnet watch run
 <b>Eclass Frontend</b>
 you can git clone visit in [eclass](https://github.com/WayanBerdyanto/EclassReact)
 ```
-https://github.com/WayanBerdyanto/EclassReact.git
+git clone https://github.com/WayanBerdyanto/EclassReact.git
 ```
