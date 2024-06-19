@@ -15,7 +15,7 @@ public class Users
     public string Username { get; set; } = null!;
 
     [BsonElement("Email")]
-    public string Email { get; set; } = null!;
+    public string? Email { get; set; }
 
     [BsonElement("Password")]
     public string Password { get; set; } = null!;
