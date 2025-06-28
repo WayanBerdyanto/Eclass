@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  webapp:
+    build: .
+    ports:
+      - "5157:80"
+    depends_on:
+      - mongodb
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - EclassDatabase__ConnectionString=mongodb://mongodb:27017
+      - EclassDatabase__DatabaseName=Eclass
+      - EclassDatabase__StudentsCollectionName=Students
+      - EclassDatabase__LecturerCollectionName=Lecturer
+      - EclassDatabase__SubjectCollectionName=Subject
+      - EclassDatabase__ElectiveCoursesCollectionName=ElectiveCourses
+      - EclassDatabase__UsersCollectionName=Users
+
+  mongodb:
+    image: mongo:7.0
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
