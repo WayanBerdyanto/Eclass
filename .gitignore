@@ -1,0 +1,49 @@
+# Build folders
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider
+.idea/
+
+# VS Code
+.vscode/
+.vscode/*.code-workspace
+
+# .NET secrets
+**/secrets.json
+
+# Logs
+*.log
+logs/
+*.tlog
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+
+# Docker
+docker-compose.override.yml
+.dockerignore
+
+# Coverage and test results
+TestResults/
+coverage/
+*.coverage
+*.coveragexml
+
+# Others
+*.swp
+*.tmp
+
+# Node/npm (if used)
+node_modules/
